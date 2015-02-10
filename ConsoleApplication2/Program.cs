@@ -28,7 +28,7 @@ namespace ConsoleApplication2
         public static void SendMail(string fromAddress, List<string> toAddress, string subject, string body, Dictionary<string, string> LinkedResourcesDic)
         {
             SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["MailHost"]);
-
+            
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromAddress);
             foreach (string s in toAddress)
@@ -48,6 +48,7 @@ namespace ConsoleApplication2
 
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
+            client.Port = Int32.Parse(ConfigurationManager.AppSettings["MailPort"]);
 
             NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAccountName"], ConfigurationManager.AppSettings["FromAddressPwd"]);
             client.Credentials = myCredentials;

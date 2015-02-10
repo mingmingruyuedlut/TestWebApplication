@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -14,7 +15,7 @@ namespace ConsoleApplication2
         {
             try
             {
-                SendMail("svc_svcustapp@interactive.com.au", TestEmailAddress().ToList(), "Test", "Just Test.", null);
+                SendMail(ConfigurationManager.AppSettings["FromAddress"], TestEmailAddress().ToList(), "Test", "Just Test.", null);
             }
             catch (Exception ex)
             {
@@ -26,7 +27,7 @@ namespace ConsoleApplication2
 
         public static void SendMail(string fromAddress, List<string> toAddress, string subject, string body, Dictionary<string, string> LinkedResourcesDic)
         {
-            SmtpClient client = new SmtpClient("smtp.interactive.com.au");
+            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["MailHost"]);
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromAddress);
@@ -48,7 +49,7 @@ namespace ConsoleApplication2
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
 
-            NetworkCredential myCredentials = new NetworkCredential(fromAddress, "Th!s!s@l0ngp@ssw0rd");
+            NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAccountName"], ConfigurationManager.AppSettings["FromAddressPwd"]);
             client.Credentials = myCredentials;
 
             client.Send(message);

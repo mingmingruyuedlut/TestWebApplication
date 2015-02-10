@@ -48,3 +48,4 @@ c:\users\eric.sun\documents\visual studio 2013\Projects\TestWebApplication\TestW
 c:\users\eric.sun\documents\visual studio 2013\Projects\TestWebApplication\TestWebApplication\bin\Microsoft.Owin.Security.OAuth.xml
 c:\users\eric.sun\documents\visual studio 2013\Projects\TestWebApplication\TestWebApplication\obj\Debug\TestWebApplication.dll
 c:\users\eric.sun\documents\visual studio 2013\Projects\TestWebApplication\TestWebApplication\obj\Debug\TestWebApplication.pdb
+C:\Users\Eric.Sun\Documents\Visual Studio 2013\Projects\TestWebApplication\TestWebApplication\obj\Debug\TestWebApplication.csprojResolveAssemblyReference.cache

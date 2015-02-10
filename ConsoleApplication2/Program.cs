@@ -27,7 +27,11 @@ namespace ConsoleApplication2
 
         public static void SendMail(string fromAddress, List<string> toAddress, string subject, string body, Dictionary<string, string> LinkedResourcesDic)
         {
-            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["MailHost"]);
+            //SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["MailHost"]);
+
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.interactive.com.au";
+            client.Timeout = 300000;
             
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromAddress);
@@ -50,7 +54,7 @@ namespace ConsoleApplication2
             client.UseDefaultCredentials = false;
             client.Port = Int32.Parse(ConfigurationManager.AppSettings["MailPort"]);
 
-            NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAccountName"], ConfigurationManager.AppSettings["FromAddressPwd"]);
+            NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["FromAddress"], ConfigurationManager.AppSettings["FromAddressPwd"]);
             client.Credentials = myCredentials;
 
             client.Send(message);

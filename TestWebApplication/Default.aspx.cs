@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,20 @@ namespace TestWebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void SendEmail(object sender, EventArgs e)
+        {
+            try
+            {
+                Email myEmail = new Email();
+                myEmail.SendMail(ConfigurationManager.AppSettings["FromAddress"], Email.TestEmailAddress().ToList(), "Test", "Just Test.", null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.ReadKey();
+            }
         }
     }
 }

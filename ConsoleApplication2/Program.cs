@@ -15,6 +15,12 @@ namespace ConsoleApplication2
         {
             try
             {
+                Console.WriteLine("From Email Address: " + ConfigurationManager.AppSettings["FromAddress"]);
+                Console.WriteLine("Mail Host: " + ConfigurationManager.AppSettings["MailHost"]);
+                Console.WriteLine("Mail Port: " + ConfigurationManager.AppSettings["MailPort"]);
+                Console.WriteLine("Mail Account Name: " + ConfigurationManager.AppSettings["MailAccountName"]);
+                Console.WriteLine("Mail Account Pwd: " + ConfigurationManager.AppSettings["FromAddressPwd"]);
+
                 SendMail(ConfigurationManager.AppSettings["FromAddress"], TestEmailAddress().ToList(), "Test", "Just Test.", null);
             }
             catch (Exception ex)

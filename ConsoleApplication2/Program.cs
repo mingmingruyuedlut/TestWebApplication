@@ -56,7 +56,7 @@ namespace ConsoleApplication2
             message.BodyEncoding = System.Text.Encoding.UTF8;
             message.IsBodyHtml = true;
 
-            client.EnableSsl = true;
+            //client.EnableSsl = true;
             client.UseDefaultCredentials = false;
             client.Port = Int32.Parse(ConfigurationManager.AppSettings["MailPort"]);
 

@@ -54,7 +54,7 @@ namespace ConsoleApplication2
             client.UseDefaultCredentials = false;
             client.Port = Int32.Parse(ConfigurationManager.AppSettings["MailPort"]);
 
-            NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAccountName"], ConfigurationManager.AppSettings["FromAddressPwd"]);
+            NetworkCredential myCredentials = new NetworkCredential(ConfigurationManager.AppSettings["FromAddress"], ConfigurationManager.AppSettings["FromAddressPwd"]);
             client.Credentials = myCredentials;
 
             client.Send(message);
